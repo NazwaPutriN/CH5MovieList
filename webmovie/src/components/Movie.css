@@ -1,0 +1,26 @@
+.mySwiper {
+    margin-left: 2px;
+    margin-right: 4px;
+    gap: 1rem;
+    width: 100%;
+}
+.mov h1{
+    margin: 100px 40px 50px;
+    
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.movie-container {
+    margin-left: 20px;
+    display: flex;
+}
+
+.container {
+    border-radius: 3%;
+    width: 20%;
+}
+
+.container h3 {
+    text-align: center;
+}
