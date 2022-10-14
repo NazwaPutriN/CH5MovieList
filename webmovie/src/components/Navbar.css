@@ -9,7 +9,7 @@
     margin-top: 10px;
     font-size: 50px;
     font-weight: 800;
-    color: red;
+    color: transparent;
 }
 
 .searchBox {
@@ -43,3 +43,22 @@
     border-radius: 30px;
 } 
 
+.formlogin {
+    width: 100%;
+    height: 50%;
+    margin-top: 140px;
+}
+
+.isilogin {
+    border-radius: 50%;
+}
+
+.buttonlogin {
+    margin-left: 2px;
+}
+
+.formregis {
+    width: 130%;
+    height: 50%;
+    margin-top: 140px;
+}

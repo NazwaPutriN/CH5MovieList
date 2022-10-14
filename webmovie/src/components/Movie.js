@@ -22,7 +22,6 @@ const Movie = () => {
         })
         const results = data.data.results
         setMovieData(results)
-        //console.log(data.data.results)
     }
 
     useEffect(() => {
@@ -34,19 +33,42 @@ const Movie = () => {
     <>
     <Fragment>
         <div className='mov'>
-        <h1>Popular Movies</h1>
+        <h1>Popular Movie</h1>
         </div>
             <div className='movie-container'>
                 <Swiper 
-                        slidesPerView={3}
+                        slidesPerView={4}
                         className="mySwiper"
                 >
                     {movieData.map((movie) => (
                         <SwiperSlide>
                             <Fragment>
                                 <div className='container'>
-                                    <img src={movie.poster_path ? `${Images}${movie.poster_path}` : NoImg} alt=""/>
-                                    <h3>{movie.title}</h3>
+                                    <img className='image' src={movie.poster_path ? `${Images}${movie.poster_path}` : NoImg} alt=""/>
+                                    {/* <h3>{movie.title}</h3> */}
+                                </div>
+                            </Fragment>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+    </Fragment>
+
+    <Fragment>
+        <div className='mov'>
+        <h1>Browse By Category</h1>
+        </div>
+            <div className='movie-container'>
+                <Swiper 
+                        slidesPerView={4}
+                        className="mySwiper"
+                >
+                    {movieData.map((movie) => (
+                        <SwiperSlide>
+                            <Fragment>
+                                <div className='container'>
+                                    <img className='image' src={movie.poster_path ? `${Images}${movie.poster_path}` : NoImg} alt=""/>
+                                    {/* <h3>{movie.title}</h3> */}
                                 </div>
                             </Fragment>
                         </SwiperSlide>

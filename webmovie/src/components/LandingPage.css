@@ -8,7 +8,6 @@
     position: relative;
 }
 
-
 .description {
     margin-bottom: 200px;
 }
@@ -37,13 +36,6 @@
     text-align: center;
     margin-right: 2000px;
 }
-
-/* .App {
-    height: 100vh;
-    background: url("../assets/background.png");
-    background-size: cover;
-    
-} */
 
 .navigatbar {
     margin-bottom: 130px;
