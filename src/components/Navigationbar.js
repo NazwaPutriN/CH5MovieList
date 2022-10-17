@@ -2,13 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { useParams } from 'react-router-dom';
 
 import axios from 'axios'
 
 const Navigationbar = () => {
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
-  const handleClose = () => setSmShow(false);
+  const handleSubmit = () => {
+    console.log('test')
+  }
 
   const[data,setData]=useState();
   const[search,setSearch]=useState("");
@@ -16,23 +19,26 @@ const Navigationbar = () => {
 
   const API_MOVIELIST = 'https://api.themoviedb.org/3/movie/{movie_id}/lists?api_key=<<api_key>>&language=en-US&page=1'
   
-  useEffect(() => {
-    axios.get(API_MOVIELIST)
-    .then(res => setData(res.data))
-    .catch(err => console.log(err))
-  },[setData, API_MOVIELIST])
-  console.log(data)
+  let {name} = useParams();
 
-  const searchMovie = (evt) => {
-    if(evt.key=="Enter")
-    {
-      fetch(`https://api.themoviedb.org/3/movie/{movie_id}/lists?api_key=<<api_key>>&language=en-US&page=1${search}`)
-      .then(res=>res.json())
-      .then(data=>{
-        setMovie(data.movies)
-      })
-    }
-  }
+  useEffect(() => {
+    axios.get(`https://api.themoveidb.org/3/search/movie?api_key=97caff1504fb5f9037e7c577be630b77&query=${search}`)
+    .then((response) => {
+      setSearch(response.data.results)
+      });
+  },[name])
+
+  // const searchMovie = (evt) => {
+  //   if(evt.key=="Enter")
+  //   {
+  //     fetch(`API_MOVIELIST${search}`)
+  //     // https://api.themoviedb.org/3/movie/{movie_id}/lists?api_key=<<api_key>>&language=en-US&page=1${search}
+  //     .then(res=>res.json())
+  //     .then(data=>{
+  //       setMovie(data.movies)
+  //     })
+  //   }
+  // }
 
   return (
     <div className='navbar'>
@@ -51,9 +57,9 @@ const Navigationbar = () => {
                 type="search" 
                 className='search-bar' 
                 placeholder='What do you want to watch?' 
-                onChange={(e)=>setSearch(e.target.value)} 
+                // onChange={(e)=>setSearch(e.target.value)} 
                 value={search} 
-                onKeyPress={searchMovie}>
+                onKeyPress={name}>
               </input>
           </div>
           {/*--- End Nav Search --- */}
@@ -74,9 +80,13 @@ const Navigationbar = () => {
                 </Modal.Header>
                   <Modal.Body>
                     <Form>
-                      <Form.Group className="isilogin mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Group 
+                      className="isilogin mb-3" 
+                      controlId="input"
+                      >
                         <Form.Control
                           type="email"
+                          onChange={(e)=>console.log(e.target.value)}
                           placeholder="Email Address"
                           autoFocus
                         />
@@ -84,14 +94,16 @@ const Navigationbar = () => {
                         <Form.Group className="isilogin mb-3" controlId="exampleForm.ControlTextarea1">
                           <Form.Control
                             type="text"
+                            // onChange={(e)=> tes}
                             placeholder="Password"
+                            className="hover:border-rose-700 focus:bg-rose-700"
                             autoFocus
                           />
                         </Form.Group>
                     </Form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="danger" onClick={handleClose} className='buttonlogin'>
+                    <Button variant="danger" onClick={handleSubmit} className='buttonlogin'>
                       Login
                     </Button>
                   </Modal.Footer>
@@ -151,7 +163,7 @@ const Navigationbar = () => {
               </Modal.Body>
 
                 <Modal.Footer>
-                  <Button variant="danger" onClick={handleClose}> Register Now </Button>
+                  <Button variant="danger" onClick={handleSubmit}> Register Now </Button>
                 </Modal.Footer>
       </Modal>
           </div>
