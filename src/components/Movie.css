@@ -3,8 +3,27 @@
     margin-right: 8px;
     gap: 10rem;
 }
+
+.mov {
+    display: flex;
+    margin-top: 80px ;
+    margin-bottom: 35px;
+}
+
 .mov h1{
-    margin: 100px 20px 50px;
+    margin-left: 20px;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.mov2 {
+    display: flex;
+    margin-top: 100px ;
+    margin-bottom: 35px;
+}
+
+.mov2 h1{
+    margin-left: 20px;
     font-size: 40px;
     font-weight: 700;
 }
@@ -14,12 +33,25 @@
     height: 500px;
     border-radius: 15px;
 }
-/* 
-.movie-container {
-    margin-left: 20px;
-    display: flex;
-} */
 
 .container h3 {
     text-align: center;
+}
+
+.btn_AllMovie {
+    background-color: transparent;
+    border: 0px;
+    color:brown;
+    font-size: 26px;
+    font-weight:500;
+    margin-left: 858px;
+}
+
+.btn_AllMovie2 {
+    background-color: transparent;
+    border: 0px;
+    color:brown;
+    font-size: 26px;
+    font-weight:500;
+    margin-left: 746px;
 }

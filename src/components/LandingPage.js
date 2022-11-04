@@ -4,12 +4,9 @@ import {Button} from "react-bootstrap"
 import {Navbar, Nav} from "react-bootstrap"
 
 function LandingPage() {
-  const handleClickLogin = () => {
-    console.log("hello guys");
-  }
-  const handleClickRegis = () => {
-    console.log("Welcome to Website Movie");
-  }
+
+  const API_MOVIELIST = 'https://api.themoviedb.org/3/movie/{movie_id}/lists?api_key=<<api_key>>&language=en-US&page=1'
+  
   return (
     <div className='page'>
       <Carousel fade>

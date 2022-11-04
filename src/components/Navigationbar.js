@@ -3,12 +3,22 @@ import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useParams } from 'react-router-dom';
-
 import axios from 'axios'
+import jwtdecode from "jwt-decode"
 
 const Navigationbar = () => {
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fisrtName, setfirstName] = useState("");
+
+  let token = localStorage.getItem("user");
+  let firstname = localStorage.getItem("firstname")
+
+
   const handleSubmit = () => {
     console.log('test')
   }
@@ -26,7 +36,7 @@ const Navigationbar = () => {
     .then((response) => {
       setSearch(response.data.results)
       });
-  },[name])
+  },[])
 
   // const searchMovie = (evt) => {
   //   if(evt.key=="Enter")
@@ -39,6 +49,30 @@ const Navigationbar = () => {
   //     })
   //   }
   // }
+
+  // const Login = () => setLogOpen(true);
+  // const handleCloseLogin = () => setLogOpen(false);
+  // const handleSubmit = async () => {
+  //   try {
+  //     const res = await axios.post("https://notflixtv.herokuapp.com/api/v1/users/login",
+  //     {
+  //       email: email,
+  //       password: password,
+  //     });
+  //     setUser(res.data.data)
+
+  //     localStorage.setItem("login", JSON.stringify(res.data.data))
+  //     localStorage.setItem("user", JSON.stringify(res.data.data.token))
+  //     localStorage.setItem("firstname", JSON.stringify(res.data.data.firstname))
+
+  //     setEmail("");
+  //     setPassword("");
+  //     setLogOpen(false);
+
+  //   }catch (error){
+      
+  //   }
+  // } 
 
   return (
     <div className='navbar'>
@@ -54,12 +88,13 @@ const Navigationbar = () => {
         <Nav className='navbar navbar-expand- lg text-white bg-transparant z-index=2'>
           <div className='searchBox'> 
               <input 
-                type="search" 
+                type="text" 
                 className='search-bar' 
                 placeholder='What do you want to watch?' 
-                // onChange={(e)=>setSearch(e.target.value)} 
-                value={search} 
-                onKeyPress={name}>
+                onChange={(e)=>setSearch(e.target.value)} 
+                value={search.name} 
+                onClick='submit'
+              >
               </input>
           </div>
           {/*--- End Nav Search --- */}
